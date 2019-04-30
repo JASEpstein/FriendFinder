@@ -9,6 +9,10 @@ based on the answers provided.
 ## Technologies
 Express, Node, Bootstrap, Heroku
 
+### Node Modules
+- Express
+- Express Body-Parser
+
 ## Contributors
 @JASEpstein
 
