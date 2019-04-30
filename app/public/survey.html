@@ -18,11 +18,11 @@
         <form>
             <div class="form-group mt-4">
                 <label for="name" style="font-weight: bold;">Name (required)</label>
-                <input type="text" class="form-control mb-4" required id="name" aria-describedby="name input"
+                <input type="text" class="form-control mb-4" id="name" aria-describedby="name input"
                     placeholder="Enter name here">
                 <label for="photolink" style="font-weight: bold;">Link to Photo Image (required) </label>
                 <div class="input-group mb-4">
-                    <input type="text" class="form-control" id="photolink" required aria-describedby="photo link input"
+                    <input type="text" class="form-control" id="photolink" aria-describedby="photo link input"
                         placeholder="Enter link URL here">
                 </div>
 
@@ -32,7 +32,7 @@
                 <h3 class="mt-4">Question 1</h3>
                 <p>Your mind is always buzzing with unexplored ideas and plans.</p>
                 <select class="custom-select col-3" required id="question1">
-                    <option selected>Choose an Option</option>
+
                     <option value=1>1 (Strongly Disagree)</option>
                     <option value=2>2</option>
                     <option value=3>3</option>
@@ -42,7 +42,7 @@
                 <h3 class="mt-4">Question 2</h3>
                 <p>Generally speaking, you rely more on your experience than your imagination.</p>
                 <select class="custom-select col-3" required id="question2">
-                    <option selected>Choose an Option</option>
+
                     <option value=1>1 (Strongly Disagree)</option>
                     <option value=2>2</option>
                     <option value=3>3</option>
@@ -52,7 +52,7 @@
                 <h3 class="mt-4">Question 3</h3>
                 <p>You find it easy to stay relaxed and focused even when there is some pressure.</p>
                 <select class="custom-select col-3" required id="question3">
-                    <option selected>Choose an Option</option>
+
                     <option value=1>1 (Strongly Disagree)</option>
                     <option value=2>2</option>
                     <option value=3>3</option>
@@ -62,7 +62,7 @@
                 <h3 class="mt-4">Question 4</h3>
                 <p>You rarely do something just out of sheer curiosity.</p>
                 <select class="custom-select col-3" required id="question4">
-                    <option selected>Choose an Option</option>
+
                     <option value=1>1 (Strongly Disagree)</option>
                     <option value=2>2</option>
                     <option value=3>3</option>
@@ -72,7 +72,7 @@
                 <h3 class="mt-4">Question 5</h3>
                 <p>People can rarely upset you.</p>
                 <select class="custom-select col-3" required id="question5">
-                    <option selected>Choose an Option</option>
+
                     <option value=1>1 (Strongly Disagree)</option>
                     <option value=2>2</option>
                     <option value=3>3</option>
@@ -82,7 +82,7 @@
                 <h3 class="mt-4">Question 6</h3>
                 <p>It is often difficult for you to relate to other people’s feelings.</p>
                 <select class="custom-select col-3" required id="question6">
-                    <option selected>Choose an Option</option>
+
                     <option value=1>1 (Strongly Disagree)</option>
                     <option value=2>2</option>
                     <option value=3>3</option>
@@ -92,7 +92,7 @@
                 <h3 class="mt-4">Question 7</h3>
                 <p>In a discussion, truth should be more important than people’s sensitivities.</p>
                 <select class="custom-select col-3" required id="question7">
-                    <option selected>Choose an Option</option>
+
                     <option value=1>1 (Strongly Disagree)</option>
                     <option value=2>2</option>
                     <option value=3>3</option>
@@ -102,7 +102,7 @@
                 <h3 class="mt-4">Question 8</h3>
                 <p>You rarely get carried away by fantasies and ideas.</p>
                 <select class="custom-select col-3" required id="question8">
-                    <option selected>Choose an Option</option>
+
                     <option value=1>1 (Strongly Disagree)</option>
                     <option value=2>2</option>
                     <option value=3>3</option>
@@ -113,7 +113,7 @@
                 <p>You think that everyone’s views should be respected regardless of whether they are supported by facts
                     or not.</p>
                 <select class="custom-select col-3" required id="question9">
-                    <option selected>Choose an Option</option>
+
                     <option value=1>1 (Strongly Disagree)</option>
                     <option value=2>2</option>
                     <option value=3>3</option>
@@ -123,7 +123,7 @@
                 <h3 class="mt-4">Question 10</h3>
                 <p>You feel more energetic after spending time with a group of people.</p>
                 <select class="custom-select col-3" required id="question10">
-                    <option selected>Choose an Option</option>
+
                     <option value=1>1 (Strongly Disagree)</option>
                     <option value=2>2</option>
                     <option value=3>3</option>
@@ -144,11 +144,28 @@
             <p>|</p>
             <a href="https://github.com/JASEpstein/FriendFinder">Github Repo</a>
         </div>
-
-
-
     </div>
 
+    <div class="modal d-none" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Your Best Match is:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="matchName"></h6>
+                    <img class="matchPhoto" src="" alt="match picture">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js'></script>
@@ -169,7 +186,15 @@
                 url: "/api/friends",
                 method: "POST",
                 data: answerObject
+            }).then(function (err, res) {
+                if (err) throw err;
+                console.log(res);
+                $('.matchName').html(res.name);
+                $('.matchPhoto').attr("src", res.photo)
+                $('.modal').toggleClass('d-none');
             })
+
+
 
         })
     </script>
